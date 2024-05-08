@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <title>Add New Product</title>
+    <style>
+        .main{
+            background-color: #57606f;
+        }
+        .product-admin-navbar {
+        width: 100%;
+        height: 70px;
+        background-color: #596275;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 20px;
+        box-sizing: border-box;
+        }
+
+        .product-admin-navbar .title {
+        color: #fff;
+        font-size: 20px;
+        font-weight: bold;
+        }
+
+        .product-admin-navbar .links {
+        display: flex;
+        align-items: center;
+        }
+
+        .product-admin-navbar .links a {
+        color: #fff;
+        text-decoration: none;
+        font-size: 16px;
+        }
+
+        .product-admin-navbar .links a.active {
+        font-weight: bold;
+        }
+
+        .product-admin-navbar .links .dropdown {
+        position: relative;
+        margin-left: 20px;
+        }
+
+        .product-admin-navbar .links .dropdown .dropbtn {
+        background-color: #4CAF50;
+        padding: 5px 10px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        }
+
+        .product-admin-navbar .links .dropdown .dropdown-content {
+        display: none;
+        position: absolute;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+        }
+
+        .product-admin-navbar .links .dropdown .dropdown-content a {
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        }
+
+        .product-admin-navbar .links .dropdown .dropdown-content a:hover {background-color: #f1f1f1;}
+
+        .product-admin-navbar .links .dropdown:hover .dropdown-content {
+        display: block;
+        }
+
+        .product-admin-navbar .links .dropdown:hover .dropbtn {
+        background-color: #4CAF50;
+        }
+        .product-admin-start {
+            margin: auto;
+            width: 60%;
+            height: 40%;
+            background-color: #57606f;
+        }
+        .product-admin-main {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: #fff;
+        }
+        .main{
+            background-color: #4b4b4b;
+        }
+        .product-admin {
+            width: 48%;
+            max-width: 600px;
+            padding: 20px;
+        }
+    
+        .product-admin h2 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+    
+        .product-admin label {
+            display: block;
+            margin-bottom: 10px;
+        }
+    
+        .product-admin input[type="text"],
+        .product-admin input[type="date"],
+        .product-admin input[type="number"],
+        .product-admin select {
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin-bottom: 20px;
+            background-color: #747d8c;
+            border: none;
+            color: white;
+        }
+    
+        .product-admin textarea {
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin-bottom: 20px;
+            height: 100px;
+            background-color: #747d8c;
+        }
+    
+        .product-admin button[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #f39c12;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    
+        .product-admin .accounts {
+            margin-top: 30px;
+            border-top: 1px solid #ccc;
+            padding-top: 20px;
+        }
+    
+        .product-admin .accounts h3 {
+            margin-bottom: 10px;
+        }
+    
+        .product-admin .accounts p {
+            margin: 0;
+        }
+    
+        .pic-uplaod {
+            width: 100%;
+            height: 200px;
+            background-color: #aaa69d;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+    
+        .pic-uplaod button {
+            width: 100%;
+            padding: 10px;
+            background-color: #f39c12;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .bottom-btn {
+            width: 850px;
+        }
+        .pic-uplaod i {
+            color: #fff;
+            width: 50px;
+            height: 50px;
+            background-color: #747d8c;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .product-admin-icon {
+            display: inline-block;
+            text-align: center;
+            margin-right: 20px;
+            height: 70px;
+            width: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .product-admin-icon a {
+            display: block;
+            text-decoration: none;
+        }
+
+        .product-admin-icon i {
+            font-size: 16px;
+        }
+
+        .product-admin-icon span {
+            display: block;
+            margin-top: 5px;
+        }
+        .product-admin-icon:hover .dashboard-icon i,
+        .product-admin-icon:hover .dashboard-icon span,
+        .product-admin-icon:hover .product-icon i,
+        .product-admin-icon:hover .product-icon span,
+        .product-admin-icon:hover .account-icon i,
+        .product-admin-icon:hover .account-icon span {
+            color: #f39c12;
+        }
+
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropbtn {
+            background-color: transparent;
+            border: none;
+            color: #fff;
+            font-size: 13px;
+            cursor: pointer;
+            padding: 0;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            z-index: 1;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown-content a {
+            color: #fff;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #ddd;
+        }
+
+        .dropdown:focus-within .dropdown-content {
+            display: block;
+        }
+
+    </style>
+    </head>
+    <body>
+    <div class="main">
+        <div class="product-admin-navbar">
+            <div class="title">PRODUCT ADMIN</div>
+            <div class="links">
+                <div class="product-admin-icon" onclick="changeIconColor(this)">
+                    <a href="#" class="dashboard-icon">
+                        <i class="fas fa-tachometer-alt"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </div>
+                <div class="product-admin-icon" onclick="changeIconColor(this)">
+                    <a href="#" class="product-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span>Products</span>
+                    </a>
+                </div>
+                <div class="product-admin-icon" onclick="changeIconColor(this)">
+                    <a href="#" class="account-icon">
+                        <i class="far fa-user"></i>
+                        <span>Accounts</span>
+                    </a>
+                </div>            
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">Admin, Logout</button>
+            </div>
+        </div>
+        <div class="product-admin-start">
+            <div class="product-admin-main">
+                <div class="product-admin">
+                    <form>
+                        <h5>Add Product</h5>
+        
+                        <label for="product-name">Product Name</label>
+                        <input type="text" id="product-name" name="product-name">
+                    
+                        <label for="description">Description</label>
+                        <textarea id="description" name="description"></textarea>
+                    
+                        <label for="category">Category</label>
+                        <select id="category" name="category">
+                            <option value="">Select Option</option>
+                            <option value="electronics">Electronics</option>
+                            <option value="fashion">Fashion</option>
+                            <option value="home">Home</option>
+                        </select>
+                    
+                        <div style="display: flex; justify-content: space-between;">
+                            <div style="width: 48%;">
+                                <label for="expire-date">Expire Date</label>
+                                <input type="date" id="expire-date" name="expire-date">
+                            </div>
+                            <div style="width: 48%;">
+                                <label for="units-in-stock">Units In Stock</label>
+                                <input type="number" id="units-in-stock" name="units-in-stock" value="1">
+                            </div>
+                        </div>
+                    
+                    </form>
+                </div>
+                <div class="product-admin">
+                    <div class="pic-uplaod" onclick="uploadImage()">
+                        <label for="file-input">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                        </label>
+                        <input type="file" id="file-input" style="display: none;" accept="image/*" onchange="displayImagePreview(event)">
+                    </div>
+                    <div style="margin-bottom: 20px;">
+                        <button type="submit">UPLOAD PRODUCT IMAGE</button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-admin">
+                <div class="bottom-btn">
+                    <button type="submit">ADD PRODUCT NOW</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    </body>
+    <script>
+        function changeIconColor(element) {
+            var icons = document.querySelectorAll('.product-admin-icon');
+            icons.forEach(icon => {
+                icon.style.backgroundColor = "";
+            });
+            
+            var allIcons = document.querySelectorAll('.product-admin-icon i');
+            var allSpans = document.querySelectorAll('.product-admin-icon span');
+            allIcons.forEach(icon => {
+                icon.style.color = "#fff";
+            });
+            allSpans.forEach(span => {
+                span.style.color = "#fff";
+            });
+            
+            element.style.backgroundColor = "#f39c12";
+        }
+        function uploadImage() {
+            document.getElementById('file-input').click();
+        }
+
+        function displayImagePreview(event) {
+            var file = event.target.files[0];
+            if (file) {
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    var img = document.createElement('img');
+                    img.src = e.target.result;
+                    img.style.maxWidth = '100%';
+                    img.style.maxHeight = '200px';
+                    var picUploadDiv = document.querySelector('.pic-uplaod');
+                    picUploadDiv.innerHTML = '';
+                    picUploadDiv.appendChild(img);
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+    </script>
+</html>

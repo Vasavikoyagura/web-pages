@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="dashboard page.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" >
+    <meta charset="UTF-8"/>
+    <meta name="'viewport" content="width-device-width , initial-scale= 1.0, maximum-scale=1.0,
+    user-scalable=no">
+    <title>Combined Chart.js Example</title>
+    <style type="text/css">
+      .chartbox{
+        width: 400px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main">
+      <div class="header">
+        <div class="menu">
+          <i class="fa-solid fa-bars"></i>
+        </div>
+        <img class="heading-logo" src="Imgur-Logo-Font-Free-Download-removebg-preview.png">
+        <button class="signin-button">Sign In</button>
+      </div>
+      <div class="second">
+        <p class="para">532 Views &middot; December 18 2019</p>
+        <button class="next-button">Next &nbsp; &gt;</button>
+      </div>
+      <div class="third">
+        <div class="product">
+          <p class="para1">PRODUCT ADMIN</p>
+          <div class="dashboard">
+            <div  class="tacho">
+              <i class="fas fa-tachometer-alt-fast"></i>
+            </div>
+          <figcaption class="para2">Dashboard</figcaption>
+          </div>
+          <div class="selected">
+            <div  class="basket">
+              <i class="fa-sharp fa-solid fa-cart-shopping"></i>
+            </div>
+          <figcaption class="para3">Products</figcaption>
+          </div>
+          <div>
+            <div  class="account">
+              <i class="fa-regular fa-user"></i>
+            </div>
+          <figcaption class="para3">Accounts</figcaption>
+          </div> 
+          <p class="admin">Admin, <strong>Logout</strong></p>     
+        </div>
+        <div class="forth">
+          <p class="para5">Welcome back, Admin</p>
+            <div class="container">
+              <div class="linechart">
+              <p class="blockname">Latest Hits</p>
+              <div class="chartbox">
+                <canvas id="myChart"></canvas>
+              </div>
+              <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+              <script>
+                const ctx = document.getElementById('myChart').getContext('2d');
+                const myChart = new Chart(ctx, {
+                  type: 'line',
+                  data: {
+                    labels: [
+                      "January",
+                      "February",
+                      "March",
+                      "April",
+                      "May",
+                      "June",
+                      "July",
+                    ],
+                    datasets: [
+                      {
+                        label: "Latest Hits",
+                        backgroundColor: "rgb(200,99,132)",
+                        borderColor: "rgb(0,204,204)",
+                        data: [89, 68, 80, 57, 50, 55, 70],
+                        borderWidth: 2,
+                        tension: 0.4,
+                      },
+                      {
+                        label: "Popular Hits",
+                        backgroundColor: "rgb(255,99,132)",
+                        borderColor: "rgb(255,99,132)",
+                        data: [32, 46, 38, 21, 55, 75, 68],
+                        borderWidth: 2,
+                        tension: 0.4,
+                      },
+                      {
+                        label: "Featured",
+                        backgroundColor: "#8A24C6",
+                        borderColor: "#B75EEB",
+                        data: [43, 20, 39, 47, 85, 68, 80],
+                        borderWidth: 2,
+                        tension: 0.4,
+                      },
+                    ]
+                  },
+                  options: {
+                    scales: {
+                      x: {
+                        ticks: {
+                          color: "#FFFFFF",
+                        },
+                      },
+                      y: {
+                        beginAtZero: true,
+                        ticks: {
+                          color: "#FFFFFF",
+                        },
+                      },
+                    },
+                    elements: {
+                      point: {
+                        radius: 0,
+                      },
+                    },
+                    plugins: {
+                      legend: {
+                        labels: {
+                          color: "#FFFFFF",
+                        },
+                      },
+                    },
+                  },
+                });
+              </script>  
+              </div> 
+ 
+              <div class="barchart">
+                <p class="blockname">Performance</p>  
+                <div class="chartbox"> 
+                    <canvas id="barChart"></canvas>
+                </div>
+                <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+                <script>
+                    const ctxBar = document.getElementById('barChart').getContext('2d');
+                    new Chart(ctxBar, {
+                        type: 'bar',
+                        data: {
+                            labels: ['Red', 'Aqua', 'Green', 'Yellow', 'Purple', 'Orange', 'Blue'],
+                            datasets: [{
+                                label: '# of Hits',
+                                data: [34, 40, 29, 49, 58, 38, 45],
+                                backgroundColor: ["#eb2f06", "#00FFFF", "#C7EA46", "#FFFF00", "#B75EEB", "#FFAC1C", "#60a3bc"],
+                                barThickness: 2
+                            }]
+                        },
+                        options: {
+                            indexAxis: 'y',
+                            scales: {
+                                y:{
+                                    ticks:{
+                                        color:'rgb(255,255,255)',
+                                    },
+                                    title:{
+                                        display: true,
+                                        text:'Hits',
+                                        color: 'rgb(255,255,255)',
+                                    }
+                                },
+                                x: {
+                                    beginAtZero: false,
+                                    ticks: {
+                                        stepSize: 5,
+                                        color: 'rgb(255,255,255)',
+                                    }
+                                },
+                            }
+                        }
+                    });
+                </script>
+            </div>
+            <div class="piechart">
+              <div class="chartbox1">
+                  <p class="blockname">Storage Information</p>
+                  <canvas id="pieChart" ></canvas>
+              </div>
+              <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+              <script>
+                  const ctxPie = document.getElementById('pieChart').getContext('2d');
+                  var myPieChart = new Chart(ctxPie, {
+                      type: 'pie',
+                      data: {
+                          labels: ['Used Storage (18.240GB)', 'System Storage (6.500GB)', 'Available Storage (9.150GB)'],
+                          datasets: [{
+                              label: 'storage',
+                              data: [19, 7, 10],
+                              backgroundColor: ['rgb(255, 95, 31)', 'rgb(80, 200, 120)', 'rgb(45, 190, 50)'],
+                              borderColor: ['rgba(255, 255, 240, 1)', 'rgba(255, 255, 240, 1)', 'rgba(255, 255, 240, 1)'],
+                              borderWidth: 2.5
+                          }]
+                      },
+                      options: {}
+                        
+                  });
+              </script>
+              </div>
+
+       
+              <div class="notification">
+                <p class="blockname1"> Notification List</p>
+                <div class="box">
+                  <div class="image">
+                    <img class="profile" src="images/beauty-2015-05-beauty-looks-cat-eye-main.webp">
+                  </div>
+                  <div class="matter">
+                    <p class="matter1"><nobr><strong>Jessica</strong> and <strong> 6 others</strong>  sent you new <span class="span">product </nobr></span>
+                      <span class="span">updates</span>. Check new orders<br><span class="time">6h ago</span> 
+                    </p>
+                  </div>
+                 </div>
+                 <div class="box">
+                  <div class="image">
+                    <img class="profile" src="images/dea8a6f0b6fe464969f038e2d1427423d1-selena-gomez.1x.rsquare.w1400.webp">
+                  </div>
+                  <div class="matter">
+                    <p class="matter1"><nobr><strong>Oliver Too</strong> and <strong> 6 others</strong>  sent you existing <span class="span">product </nobr></span>
+                      <span class="span"> updates</span>. Read more reports.<br><span class="time">6h ago</span> 
+                    </p>
+                  </div>
+                 </div>
+                 <div class="box1">
+                  <div class="image">
+                    <img class="profile" src="images/01_5e1967811ef86.jpg">
+                  </div>
+                  <div class="matter">
+                    <p class="matter1"><nobr><strong>Victoria</strong> and <strong> 6 others</strong>  sent you <span class="span">order
+                      updates</span>.</nobr> Read order information.<br><span class="time">6h ago</span> 
+                    </p>                   
+                  </div>
+                 </div>
+              </div>   
+            </div>
+            <div class="block">
+              <p class="blockname">Orders List</p>
+              <div class="semiblock">
+               <p class="naming1"> ORDERNO. STATUS OPERATORS LOCATION DISTANCE STARTDATE  ESTDELIVERYDUE</p>
+              </div>
+              <div class="semiblocks">
+               <p class="naming1">#122349 <span class="dot"></span>Moving OliverTrag London,UK 485Km 16:00,12NOV2018 08:00,18Nov2018</p>
+              </div>
+              <div class="semiblocks">
+               <p class="naming1">#122348 <span class="dot1"></span>Pending JacobMiller London,UK 360Km 11:00,10Nov2018 04:00,14Nov2018</p>
+              </div>
+              <div class="semiblocks">
+               <p class="naming1">#122347 <span class="dot2"></span>Cancelled GeorgerWilson London,UK 340Km 12:00,22Nov2018 06:00,28Nov2018</p>
+              </div>
+              <div class="semiblocks">
+               <p class="naming1">#122346 <span class="dot3"></span>Moving WilliamAung London,UK 218Km 15:00,10Nov2018 09:00,14Nov2018</p>
+              </div>
+              <div class="semiblocks">
+               <p class="naming1">#122345 <span class="dot4"></span>Pending HarryRyan London,UK 280Km 15:00,11Nov2018 09:00,17Nov2018</p>
+              </div>
+              <div class="semiblocks">
+               <p class="naming1">#122344 <span class="dot5"></span>Pending MichaelJones London,UK 218Km 18:00,12Oct2018 06:00,18Oct2018</p>
+              </div>
+              <div class="halfsemi">
+         
+              </div>
+             </div>
+             <div class="copyright">
+              <p class="copyright-para">Copyright &#169; 2018 All rights reserved Design: Template Mo</p>
+            </div>
+          </div>
+        
+              
+        </div>    
+       
+                     
+      </div> 
+        
+    </div>
+  </body>
+</html>
